@@ -10,3 +10,20 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+
+.col-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.light {
+    height: 100px; 
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; 
+  }
