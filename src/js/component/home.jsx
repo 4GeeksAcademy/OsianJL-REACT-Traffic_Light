@@ -2,55 +2,101 @@ import React, {useState} from "react";
 
 
 
+
 const Home = () => {
-	const [colorRed, setColorRed] = useState("bg-danger opacity-50")
-	const [colorOrange, setColorOrange] = useState("bg-warning opacity-50")
-	const [colorGreen, setColorGreen] = useState("bg-success opacity-50")
+	const [lightRed, setLightRed] = useState("")
+	const [lightOrange, setLightOrange] = useState("")
+	const [lightGreen, setLightGreen] = useState("")
+	const [newColor, setNewColor] = useState("bg-success")
 
-	function changeColorRed () {
-		setColorRed("bg-danger")
-		setColorOrange("bg-warning opacity-50")
-		setColorGreen("bg-success opacity-50")
-		if (colorRed === "bg-danger"){
-			setColorRed("bg-danger opacity-50")	
+	function changeLightRed () {
+		setLightRed("shadowRed")
+		setLightOrange("")
+		setLightGreen("")
+		if (lightRed === "shadowRed"){
+			setLightRed("")	
 		}
 	}
 
-	function changeColorOrange () {
-		setColorOrange("bg-warning")
-		setColorRed("bg-danger opacity-50")
-		setColorGreen("bg-success opacity-50")
-		if (colorOrange === "bg-warning"){
-			setColorOrange("bg-warning opacity-50")
+	function changeLightOrange () {
+		setLightOrange("shadowOrange")
+		setLightRed("")
+		setLightGreen("")
+		if (lightOrange === "shadowOrange"){
+			setLightOrange("")
 			
 		}
 	}
 
-	function changeColorGreen () {
-		setColorGreen("bg-success")
-		setColorOrange("bg-warning opacity-50")
-		setColorRed("bg-danger opacity-50")
-		if (colorGreen === ("bg-success")){
-			setColorGreen("bg-success opacity-50")
+	function changeLightGreen () {
+		setLightGreen("shadowGreen")
+		setLightOrange("")
+		setLightRed("")
+		if (lightGreen === ("shadowGreen")){
+			setLightGreen("")
 			
 		}
+}
+
+function buttonCycle () {
+	if (lightRed === ("") && lightOrange === ("") && lightGreen === ("")){
+		setLightRed("shadowRed")
+	}
+	else if (lightRed === ("shadowRed")){
+		setLightRed("")
+		setLightOrange("shadowOrange")
+	} else if (lightOrange === ("shadowOrange")){
+		setLightOrange("")
+		setLightGreen("shadowGreen")
+	} else if (lightGreen === ("shadowGreen")){
+		setLightGreen("")
+		setLightRed("shadowRed")
 	}
 
+	}
+
+	function newColored (){
+			setNewColor("bg-purple")
+			if (newColor === ("bg-purple")){
+				setNewColor("bg-success")
+			}
+	}
 	return (
-		<div className="trafficLightBody row container-fluid d-flex justify-content-md-center bg-white">
-			<div className="col-5"></div>
-			<div className="col-2 d-flex flex-column mt-5">
-			<div className={`redLight light rounded-circle ${colorRed}`} onClick={changeColorRed}>red</div>
-		<div className={`orangeLight light rounded-circle ${colorOrange}`} onClick={changeColorOrange}>orange</div>
-		<div className={`greenLight light rounded-circle ${colorGreen}`} onClick={changeColorGreen}>green</div>
-			</div>
+		<>
+		<div
+		className="trafficLightBody row container-fluid d-flex flex-column justify-content-md-center bg-white align-items-center"
+	  >
 		
-	<div className="col-5"></div>
+		<div className="col-1 palo d-flex"></div>
+		<div
+		  className=" d-flex flex-column align-items-center justify-content-center bg-dark rounded-4"
+		>
+		
+		  <div
+			className={`redLight ${lightRed} margenes d-flex align-items-center justify-content-center light rounded-circle bg-danger`} onClick={changeLightRed} 
+		  >
+			
+		  </div>
+		  <div
+			className={`orangeLight ${lightOrange} margenes d-flex align-items-center justify-content-center light rounded-circle bg-warning`} onClick={changeLightOrange}
+		  >
+			
+		  </div>
+		  <div
+			className={`greenLight ${lightGreen} margenes d-flex align-items-center justify-content-center light rounded-circle ${newColor}`} onClick={changeLightGreen}
+		  >
+			
+		  </div>
+		 
 		</div>
+  
+		
+	  </div>
+	  <button className="buttonCycle bg-primary rounded-3" onClick={buttonCycle}>Toggling</button>
+	  <button className="buttonColor bg-tertiary rounded-3" onClick={newColored}>NewColor</button>
+	  </>
 	);
 };
 
 export default Home;
 
-	// setColorOrange("bg-warning")
-		// setColorGreen("bg-success")
